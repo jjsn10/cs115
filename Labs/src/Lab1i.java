@@ -49,7 +49,8 @@ public class Lab1i {
 	* Description: This function sum all numbers added to the ArrayList numbers
 	* Returns: Returns the sum of the integer numbers added to the ArrayList numbers
 	*
-	* @param ArrayList<Integer> numbers ArrayList of Integer numbers filled at the main method
+	* @param ArrayList<Integer> numbers ArrayList: : This parameter is the ArrayList filled 
+	* in the main method by the user.
 	*/
 	public static int addNumbers(ArrayList<Integer> numbers) {
 		int sum = 0;
@@ -58,6 +59,14 @@ public class Lab1i {
 		}
 		return sum;
 	}
+	/**
+	* Method Name: addNumbers(ArrayList<Integer> numbers)
+	* Description: This function find the largest number from the ArrayList numbers
+	* Returns: Returns the largest integer number from the ArrayList numbers
+	*
+	* @param ArrayList<Integer> numbers ArrayList: This parameter is the ArrayList filled 
+	* in the main method by the user.
+	*/
 	public static int largestNumber(ArrayList<Integer> numbers) {
 		int largest = numbers.get(0);
 		for( int i=0; i<numbers.size();i++) {
