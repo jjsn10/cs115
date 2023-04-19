@@ -60,7 +60,7 @@ public class Lab1i {
 		return sum;
 	}
 	/**
-	* Method Name: addNumbers(ArrayList<Integer> numbers)
+	* Method Name: largestNumber(ArrayList<Integer> numbers)
 	* Description: This function find the largest number from the ArrayList numbers
 	* Returns: Returns the largest integer number from the ArrayList numbers
 	*
