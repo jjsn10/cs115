@@ -1,5 +1,5 @@
 /.metadata/
-/Labs/.settings/
-/Labs/.classpath/
-/Labs/.gitignore/
-/Labs/.project/
+.settings/
+.classpath/
+.gitignore/
+.project/
