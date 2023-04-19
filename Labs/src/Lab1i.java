@@ -17,25 +17,26 @@ public class Lab1i {
 			try {
 				String num="";
 				num = input.nextLine();
-				//System.out.println("17:"+num);
-				//System.out.println("18:"+input.nextLine());
 				if(num.equals("")) {
 					status = true;
 				}else {
-				  System.out.println(Integer.parseInt(num));
+					numbers.add(Integer.parseInt(num));
 				}
 			} catch (Exception e) {
-				System.out.println("Please enter a Integer number" + e.getMessage());
+				System.out.println("Invalid response. " + e.getMessage()+ " is not a number");
 			}
 		}while(!status);
-		numbers.add(4);
-		numbers.add(7);
-		numbers.add(9);
-		//System.out.println(largestNumber(numbers));
-		System.out.println("I left the do while");
-	}
-	public void addNumbers() {
 		
+		System.out.println("The total of the list of numbers is:"+addNumbers(numbers));
+		System.out.println("The biggest number in the list is:"+largestNumber(numbers));
+		
+	}
+	public static int addNumbers(ArrayList<Integer> numbers) {
+		int sum = 0;
+		for(int i=0; i<numbers.size(); i++) {
+			sum += numbers.get(i);
+		}
+		return sum;
 	}
 	public static int largestNumber(ArrayList<Integer> numbers) {
 		int largest = numbers.get(0);
