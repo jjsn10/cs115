@@ -1,6 +1,6 @@
 package Week2;
 
-import java.time.*;
+import java.time.LocalDate;
 
 public class Person {
 	private String name;
