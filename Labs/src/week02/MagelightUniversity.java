@@ -32,6 +32,7 @@ public class MagelightUniversity {
 			//System.out.println(p.getYears());
 			
 		}
+		System.out.printf("---------------------------------------------------------%n");
 	}
 
 }
