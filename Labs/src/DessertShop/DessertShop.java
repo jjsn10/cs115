@@ -26,9 +26,12 @@ public class DessertShop {
 		ArrayList<DessertItem>  orderItems = orders.getOrderList();
 		
 		for(DessertItem item:orderItems) {
-			System.out.println(item.getName());
+			//System.out.println(item.getName());
+			System.out.printf("%-25s$%-8.2f[Tax: $%.2f]\n", item.getName(), item.calculateCost(), item.calculateTax());
 		}
-		
-		System.out.println("Total number of items in order: "+ orders.itemCount());
+		System.out.println("------------------------------------------------");
+		System.out.printf("%-25s$%-8.2f[Tax: $%.2f]\n","Order Subtotals",orders.orderCost(),orders.orderTax());
+		System.out.printf("%-25s$%-8.2f\n","Order Total",orders.orderCost() + orders.orderTax());
+		System.out.println("Total items in the order: "+ orders.itemCount());
 	}
 }

@@ -25,7 +25,9 @@ public class Cookie extends DessertItem{
 	public void setPricePerDozen(double pricePerDozen) {
 		this.pricePerDozen = pricePerDozen;
 	}
-	
+	public Double calculateCost() {
+		return this.cookieQty * (this.pricePerDozen/12);
+	}
 	
 }
 

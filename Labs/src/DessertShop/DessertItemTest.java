@@ -8,14 +8,25 @@ class DessertItemTest {
 
 	@Test
 	void testGetName() {
-		DessertItem d = new DessertItem("Granola Bar");
+		Candy d = new Candy("Granola Bar",1.2,0.98);
 		assertEquals("Granola Bar", d.getName());
 	}
 	@Test
 	void testSetName() {
-		DessertItem d = new DessertItem("Granola Bar");
+		Candy d = new Candy("Granola Bar",1.2,0.98);
 		d.setName("Cheese Cake");
 		assertEquals("Cheese Cake",d.getName());
+	}
+	@Test
+	void testGetTaxPercent() {
+		Candy d = new Candy("Granola Bar",1.2,0.98);
+		assertEquals(7.25,d.getTaxPercent());
+	}
+	@Test
+	void testSetTaxPercent() {
+		Candy d = new Candy("Granola Bar",1.2,0.98);
+		d.setTaxPercent(7.5);
+		assertEquals(7.5,d.getTaxPercent());
 	}
 	
 

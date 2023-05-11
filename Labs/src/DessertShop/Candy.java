@@ -27,4 +27,7 @@ public class Candy extends DessertItem{
 	public void setPricePerPound(double pricePerPound) {
 		this.pricePerPound = pricePerPound;
 	}
+	public Double calculateCost() {
+		return this.candyWeight * this.pricePerPound;
+	}
 }

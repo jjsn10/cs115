@@ -17,4 +17,18 @@ public class Order {
 	public int itemCount() {
 		return order.size();
 	}
+	public Double orderCost() {
+		Double totalCost = 0.0;
+		for(DessertItem item:getOrderList()) {
+			totalCost += item.calculateCost();
+		}
+		return totalCost;
+	}
+	public Double orderTax() {
+		Double totalTax = 0.0;
+		for(DessertItem item:getOrderList()) {
+			totalTax += item.calculateTax();
+		}
+		return totalTax;
+	}
 }
