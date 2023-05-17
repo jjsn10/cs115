@@ -31,5 +31,16 @@ class CookieTest {
 		ck.setPricePerDozen(6.2);
 		assertEquals(6.2,ck.getPricePerDozen());
 	}
+	@Test
+	void testCalculateCost() {
+		Cookie c = new Cookie("Chips Ahoy",12,5.6);
+		assertEquals(c.getCookieQty()*(c.getPricePerDozen()/12),c.calculateCost());
+		
+	}
+	@Test
+	void testCalculateTax() {
+		Cookie c = new Cookie("Chips Ahoy",12,5.6);
+		assertEquals(c.calculateCost()*(c.getTaxPercent()/100),c.calculateTax());
+	}
 
 }

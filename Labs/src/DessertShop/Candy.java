@@ -30,4 +30,10 @@ public class Candy extends DessertItem{
 	public Double calculateCost() {
 		return this.candyWeight * this.pricePerPound;
 	}
+	public String toString() {
+		String line1 = String.format("%s%n",getName());
+		String line2_1 = String.format("   %s lbs. @  $ %s/lb",getCandyWeight(),getPricePerPound());
+		String line2 = String.format("%-10s%-25s",line1,line2_1);
+		return line2;
+	}
 }

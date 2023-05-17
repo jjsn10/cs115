@@ -31,4 +31,15 @@ public class Order {
 		}
 		return totalTax;
 	}
+	public String toString() {
+		String finalOutput = "";
+		finalOutput += "--------------Receipt--------------\n";
+		for(DessertItem item:this.getOrderList()) {
+			finalOutput += item.toString();
+		}
+		//finalOutput += "-----------------------------------";
+		
+		return finalOutput;
+		
+	}
 }

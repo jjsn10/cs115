@@ -12,18 +12,18 @@ public class DessertShop {
 		//Creating Instances of Candy, Cookie, IceCream, and Sunday
 				Candy c1 = new Candy("Candy Corn",1.5,0.25);
 				Candy c2 = new Candy("Gummy Bears",0.25,0.35);
-				Cookie ck1 = new Cookie("Chocolate Chip",6,3.99);
-				IceCream i = new IceCream("Pistachio",2,0.79);
-				Sundae s = new Sundae("Vanilla",3,0.69,"Hot Fudge",1.29);
-				Cookie ck2 = new Cookie("Oatmeal Raisin",2,3.45);
+				//Cookie ck1 = new Cookie("Chocolate Chip",6,3.99);
+				//IceCream i = new IceCream("Pistachio",2,0.79);
+				//Sundae s = new Sundae("Vanilla",3,0.69,"Hot Fudge",1.29);
+				//Cookie ck2 = new Cookie("Oatmeal Raisin",2,3.45);
 				
 				//Adding Items to the order
 				orders.add(c1);
 				orders.add(c2);
-				orders.add(ck1);
-				orders.add(i);
-				orders.add(s);
-				orders.add(ck2);
+				//orders.add(ck1);
+				//orders.add(i);
+				//orders.add(s);
+				//orders.add(ck2);
 		
 		/******Begin Copy******/
 
@@ -56,14 +56,14 @@ public class DessertShop {
 		                System.out.printf("%n%s has been added to your order.%n",orderItem.getName());
 		                break;
 		            case "3":            
-		                /*orderItem = userPromptIceCream();
+		                orderItem = userPromptIceCream();
 		                orders.add(orderItem);
-		                System.out.printf("%n%s has been added to your order.%n",orderItem.getName());*/
+		                System.out.printf("%n%s has been added to your order.%n",orderItem.getName());
 		                break;
 		            case "4":            
-		                /*orderItem = userPromptSundae();
+		                orderItem = userPromptSundae();
 		                orders.add(orderItem);
-		                System.out.printf("%n%s has been added to your order.%n",orderItem.getName());*/
+		                System.out.printf("%n%s has been added to your order.%n",orderItem.getName());
 		                break;
 		            default:            
 		                System.out.println("Invalid response:  Please enter a choice from the menu (1-4)");
@@ -76,18 +76,19 @@ public class DessertShop {
 		/******End Copy*****/
 		
 		
+		System.out.println(orders);
 		
 		
-		ArrayList<DessertItem>  orderItems = orders.getOrderList();
+		//ArrayList<DessertItem>  orderItems = orders.getOrderList();
 		
-		for(DessertItem item:orderItems) {
+		//for(DessertItem item:orderItems) {
 			//System.out.println(item.getName());
-			System.out.printf("%-25s$%-8.2f[Tax: $%.2f]\n", item.getName(), item.calculateCost(), item.calculateTax());
-		}
-		System.out.println("------------------------------------------------");
+			//System.out.printf("%-25s$%-8.2f[Tax: $%.2f]\n", item.getName(), item.calculateCost(), item.calculateTax());
+		//}
+		/*System.out.println("------------------------------------------------");
 		System.out.printf("%-25s$%-8.2f[Tax: $%.2f]\n","Order Subtotals",orders.orderCost(),orders.orderTax());
 		System.out.printf("%-25s$%-8.2f\n","Order Total",orders.orderCost() + orders.orderTax());
-		System.out.println("Total items in the order: "+ orders.itemCount());
+		System.out.println("Total items in the order: "+ orders.itemCount());*/
 	}
 	private static DessertItem userPromptCandy() {
 		Scanner in = new Scanner(System.in);
@@ -179,13 +180,123 @@ public class DessertShop {
 		//Candy c = new Candy(name,candyWeigth,pricePerPound);
 		return new Cookie(name,cookieQty,pricePerDozen);
 	}
-	/*private static DessertItem userPromptCookie() {
-		
-	}
 	private static DessertItem userPromptIceCream() {
+		Scanner in = new Scanner(System.in);
+		boolean status = false;
+		String name="";
+		int scoopCount=0;
+		double pricePerScoop=0.0;
+		
+		do {
+			try {
+				System.out.println("Enter the type of Ice Cream used: ");
+				name = in.nextLine();
+				status = true;
+			} catch (Exception e) {
+				// TODO: handle exception
+				System.out.println("Invalid response: Numbers are not allowed");
+			}	
+		}while(!status);
+		status = false;
+		do {
+			try {
+				System.out.println("Enter the number of scoops: ");
+				scoopCount = Integer.parseInt(in.nextLine());
+				status = true;
+			} catch (Exception e) {
+				// TODO: handle exception
+				System.out.println("Invalid response: Strings are not allowed");
+			}	
+		}while(!status);
+		status = false;
+		do {
+			try {
+				System.out.println("Enter the price per scoop: ");
+				pricePerScoop = Double.parseDouble(in.nextLine());
+				status = true;
+			} catch (Exception e) {
+				// TODO: handle exception
+				System.out.println("Invalid response: Strings are not allowed");
+			}	
+		}while(!status);
+		
+		/*in.close();*/
+
+		//Candy c = new Candy(name,candyWeigth,pricePerPound);
+		return new IceCream(name,scoopCount,pricePerScoop);
+
 		
 	}
 	private static DessertItem userPromptSundae() {
+		Scanner in = new Scanner(System.in);
+		boolean status = false;
+		String name="";
+		int scoopCount=0;
+		double pricePerScoop=0.0;
+		String toppingName ="";
+		Double toppingPrice=0.0;
 		
-	}*/
+		do {
+			try {
+				System.out.println("Enter the type of Ice Cream: ");
+				name = in.nextLine();
+				status = true;
+			} catch (Exception e) {
+				// TODO: handle exception
+				System.out.println("Invalid response: Numbers are not allowed");
+			}	
+		}while(!status);
+		status = false;
+		do {
+			try {
+				System.out.println("Enter the number of Scoops: ");
+				scoopCount = Integer.parseInt(in.nextLine());
+				status = true;
+			} catch (Exception e) {
+				// TODO: handle exception
+				System.out.println("Invalid response: Strings are not allowed");
+			}	
+		}while(!status);
+		status = false;
+		do {
+			try {
+				System.out.println("Enter the price per Scoop: ");
+				pricePerScoop = Double.parseDouble(in.nextLine());
+				status = true;
+			} catch (Exception e) {
+				// TODO: handle exception
+				System.out.println("Invalid response: Strings are not allowed");
+			}	
+		}while(!status);
+		status = false;
+		do {
+			try {
+				System.out.println("Enter the kind of toppings used: ");
+				toppingName = in.nextLine();
+				status = true;
+			} catch (Exception e) {
+				// TODO: handle exception
+				System.out.println("Invalid response: Numbers are not allowed");
+			}	
+		}while(!status);
+		status = false;
+		do {
+			try {
+				System.out.println("Enter the price for the tooping: ");
+				toppingPrice = Double.parseDouble(in.nextLine());
+				status = true;
+			} catch (Exception e) {
+				// TODO: handle exception
+				System.out.println("Invalid response: Strings are not allowed");
+			}	
+		}while(!status);
+
+		
+		/*in.close();*/
+
+		//Candy c = new Candy(name,candyWeigth,pricePerPound);
+		return new Sundae(name,scoopCount,pricePerScoop,toppingName,toppingPrice);
+
+		
+	}
 }
