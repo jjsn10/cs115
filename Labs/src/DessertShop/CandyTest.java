@@ -30,6 +30,15 @@ class CandyTest {
 		c.setPricePerPound(1.02);
 		assertEquals(1.02,c.getPricePerPound());
 	}
+	void testCalculateCost() {
+		Candy c = new Candy("Nerds",1.2,0.98);
+		assertEquals(c.getCandyWeight()*c.getPricePerPound(),c.calculateCost());
+	}
+	@Test
+	void testCalculateTax() {
+		Candy c = new Candy("Nerds",1.2,0.98);
+		assertEquals(c.calculateCost()*(c.getTaxPercent()/100),c.calculateTax());
+	}
 	
 
 }
