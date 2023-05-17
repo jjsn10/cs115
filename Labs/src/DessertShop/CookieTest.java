@@ -33,6 +33,7 @@ class CookieTest {
 	}
 	@Test
 	void testCalculateCost() {
+<<<<<<< HEAD
 		Cookie c = new Cookie("Chips Ahoy",12,5.6);
 		assertEquals(c.getCookieQty()*(c.getPricePerDozen()/12),c.calculateCost());
 		
@@ -41,6 +42,15 @@ class CookieTest {
 	void testCalculateTax() {
 		Cookie c = new Cookie("Chips Ahoy",12,5.6);
 		assertEquals(c.calculateCost()*(c.getTaxPercent()/100),c.calculateTax());
+=======
+		Cookie ck = new Cookie("Chips Ahoy",12,5.6);
+		assertEquals(ck.getCookieQty()*(ck.getPricePerDozen()/12),ck.calculateCost());
+	}
+	@Test 
+	void testCalculateTax() {
+		Cookie ck = new Cookie("Chips Ahoy",12,5.6);
+		assertEquals(ck.calculateCost()*(ck.getTaxPercent()/100),ck.calculateTax());
+>>>>>>> dc372b2384ee67d4179f21c52db3998e0f1a2451
 	}
 
 }
