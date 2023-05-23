@@ -8,35 +8,35 @@ class CandyTest {
 
 	@Test
 	void testGetCandyWeight() {
-		Candy c = new Candy("Nerds",1.2,0.98);
+		Candy c = new Candy("Nerds",1.2,0.98,"Bag");
 		assertEquals(1.2,c.getCandyWeight());
 	}
 
 	@Test
 	void testSetCandyWeight() {
-		Candy c = new Candy("Nerds",1.2,0.98);
+		Candy c = new Candy("Nerds",1.2,0.98,"Bag");
 		c.setCandyWeight(1.6);
 		assertEquals(1.6,c.getCandyWeight());
 	}
 
 	@Test
 	void testGetPricePerPound() {
-		Candy c = new Candy("Nerds",1.2,0.98);
+		Candy c = new Candy("Nerds",1.2,0.98,"Bag");
 		assertEquals(0.98,c.getPricePerPound());
 	}
 	@Test
 	void testSetPricePerPound() {
-		Candy c = new Candy("Nerds",1.2,0.98);
+		Candy c = new Candy("Nerds",1.2,0.98,"Bag");
 		c.setPricePerPound(1.02);
 		assertEquals(1.02,c.getPricePerPound());
 	}
 	void testCalculateCost() {
-		Candy c = new Candy("Nerds",1.2,0.98);
+		Candy c = new Candy("Nerds",1.2,0.98,"Bag");
 		assertEquals(c.getCandyWeight()*c.getPricePerPound(),c.calculateCost());
 	}
 	@Test
 	void testCalculateTax() {
-		Candy c = new Candy("Nerds",1.2,0.98);
+		Candy c = new Candy("Nerds",1.2,0.98,"Bag");
 		assertEquals(c.calculateCost()*(c.getTaxPercent()/100),c.calculateTax());
 	}
 	

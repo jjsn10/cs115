@@ -33,11 +33,11 @@ public class Order {
 	}
 	public String toString() {
 		String finalOutput = "";
-		finalOutput += "--------------Receipt--------------\n";
+		finalOutput += "----------------------------------------Receipt------------------------------------------\n";
 		for(DessertItem item:this.getOrderList()) {
-			finalOutput += item.toString();
+			finalOutput += item;
 		}
-		//finalOutput += "-----------------------------------";
+		finalOutput += "------------------------------------------------------------------------------------------";
 		
 		return finalOutput;
 		

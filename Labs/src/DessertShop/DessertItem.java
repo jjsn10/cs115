@@ -1,8 +1,9 @@
 package DessertShop;
 
-public abstract class DessertItem {
+public abstract class DessertItem implements Packaging{
 	private String name;
 	private Double taxPercent = 7.25;
+	private String packaging;
 	
 	public DessertItem() {
 		
@@ -25,5 +26,11 @@ public abstract class DessertItem {
 	public abstract Double calculateCost();	
 	public Double calculateTax() {
 		return calculateCost()*(taxPercent/100);
+	}
+	public String getPackaging() {
+		return this.packaging;
+	}
+	public void setPackaging(String packaging) {
+		this.packaging = packaging;
 	}
 }
