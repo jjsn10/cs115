@@ -14,7 +14,6 @@ public class Residential extends Property{
 		this.bathCount = bathCount;
 		this.sqFootage = sqFootage;
 	}
-	
 	public int getBedCount() {
 		return bedCount;
 	}
@@ -27,10 +26,10 @@ public class Residential extends Property{
 	public void setBathCount(int badCount) {
 		this.bathCount = badCount;
 	}
-	public double getSqFootage() {
+	public double getSize() {
 		return sqFootage;
 	}
-	public void setSqFootage(double sqFootage) {
+	public void setSize(double sqFootage) {
 		this.sqFootage = sqFootage;
 	}
 	

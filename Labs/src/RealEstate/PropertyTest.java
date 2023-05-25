@@ -8,22 +8,28 @@ class PropertyTest {
 
 	@Test
 	void testGetStreetAddress() {
-		fail("Not yet implemented");
+		Condo c = new Condo("1949 N 900 W, Provo UT","84064",3, 2, 2256.25,2);
+		assertEquals("1949 N 900 W, Provo UT",c.getStreetAddress());
 	}
 
 	@Test
 	void testSetStreetAddress() {
-		fail("Not yet implemented");
+		Condo c = new Condo("1949 N 900 W, Provo UT","84064",3, 2, 2256.25,2);
+		c.setStreetAddress("136 E 400 N");
+		assertEquals("136 E 400 N", c.getStreetAddress());
 	}
 
 	@Test
 	void testGetZip() {
-		fail("Not yet implemented");
+		Condo c = new Condo("1949 N 900 W, Provo UT","84064",3, 2, 2256.25,2);
+		assertEquals("84064",c.getZip());
 	}
 
 	@Test
 	void testSetZip() {
-		fail("Not yet implemented");
+		Condo c = new Condo("1949 N 900 W, Provo UT","84064",3, 2, 2256.25,2);
+		c.setZip("84046");
+		assertEquals("84046",c.getZip());
 	}
 
 }
