@@ -1,11 +1,11 @@
 package DessertShop;
 
 public interface Payable {
-	enum Paytype {
+	enum PayType {
 			CARD,
 			CASH,
 			PHONE
 	}
-	public Paytype getPayable();
-	public void setPayable(Paytype pay);
+	public PayType getPayType();
+	public void setPayType(PayType payMethod);
 }

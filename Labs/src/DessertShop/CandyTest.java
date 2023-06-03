@@ -37,7 +37,20 @@ class CandyTest {
 	@Test
 	void testCalculateTax() {
 		Candy c = new Candy("Nerds",1.2,0.98,"Bag");
+		
 		assertEquals(c.calculateCost()*(c.getTaxPercent()/100),c.calculateTax());
+	}
+	@Test
+	void testIsSameAs() {
+		Candy c1 = new Candy("Nerds",1.2,0.98,"Bag");
+		Candy c2 = new Candy("Nerds",1.5,0.98,"Bag");
+		//assertTrue(c1.getName()==c2.getName());
+		assertTrue(c1.isSameAs(c2));
+		
+		c1 = new Candy("Nerds",1.5,0.70,"Bag");
+		c2 = new Candy("Nerds",1.5,0.98,"Bag");
+		
+		assertFalse(c1.isSameAs(c2));
 	}
 	
 

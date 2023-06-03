@@ -1,6 +1,6 @@
 package DessertShop;
 
-public abstract class DessertItem implements Packaging{
+public abstract class DessertItem implements Packaging, Comparable<DessertItem>{
 	private String name;
 	private Double taxPercent = 7.25;
 	private String packaging;
@@ -32,5 +32,14 @@ public abstract class DessertItem implements Packaging{
 	}
 	public void setPackaging(String packaging) {
 		this.packaging = packaging;
+	}
+	public int compareTo(DessertItem item) {
+		if(this.calculateCost() > item.calculateCost()) {
+			return 1;
+		}else if (this.calculateCost()< item.calculateCost()) {
+			return -1;
+			
+		}
+		return 0;
 	}
 }

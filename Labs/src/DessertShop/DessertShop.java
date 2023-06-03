@@ -1,7 +1,10 @@
 package DessertShop;
 
-import java.util.ArrayList;
-import java.util.Scanner;
+//import java.util.ArrayList;
+import java.util.*;
+//import java.util.Scanner;
+
+import DessertShop.Payable.PayType;
 
 public class DessertShop {
 	
@@ -79,8 +82,30 @@ public class DessertShop {
 
 		/******End Copy*****/
 		
+		/*********Pay Method*********/
+		done=false;
+		while(!done) {
+			System.out.print("What form of payment will be used? (CASH, CARD, PHONE):\033[4m");
+			String method = sIn.nextLine();
+			for(Payable.PayType pay:Payable.PayType.values()){
+				if( method.equalsIgnoreCase(pay.name())){
+					orders.setPayType(pay);
+					done = true;
+					break;
+				}
+			}
+			if(!done) {
+				System.out.println("\033[0mThat's not a valid form of payment.");
+			}
+			
+		}
 		
-		System.out.println(orders);
+		
+		
+		/****************************/
+		
+		Collections.sort(orders.getOrderList());
+		System.out.println("\033[0m"+orders);
 		
 		
 		//ArrayList<DessertItem>  orderItems = orders.getOrderList();
@@ -90,10 +115,10 @@ public class DessertShop {
 			//System.out.printf("%-25s$%-8.2f[Tax: $%.2f]\n", item.getName(), item.calculateCost(), item.calculateTax());
 		//}
 		//System.out.println("------------------------------------------------");
-		System.out.println("Total items in the order: "+ orders.itemCount());
-		System.out.printf("%-65s$%-8.2f[Tax: $%.2f]\n","Order Subtotals",orders.orderCost(),orders.orderTax());
-		System.out.printf("%-65s$%-8.2f\n","Order Total",orders.orderCost() + orders.orderTax());
-		System.out.println("-------------------------------------------------------------------------------------------");
+		//System.out.println("Total items in the order: "+ orders.itemCount());
+		//System.out.printf("%-65s$%-8.2f[Tax: $%.2f]\n","Order Subtotals",orders.orderCost(),orders.orderTax());
+		//System.out.printf("%-65s$%-8.2f\n","Order Total",orders.orderCost() + orders.orderTax());
+		//System.out.println("-------------------------------------------------------------------------------------------");
 	}
 	private static DessertItem userPromptCandy() {
 		Scanner in = new Scanner(System.in);
@@ -138,7 +163,11 @@ public class DessertShop {
 		
 		/*in.close();*/
 
-		//Candy c = new Candy(name,candyWeigth,pricePerPound);
+		//Candy c = new Candy(name,candyWeigth,pricePerPound,packaging);
+		/*if(c instanceof Candy && c.isSameAs(c)) {
+			c.setCandyWeight(candyWeigth);
+		}
+		return c;*/
 		return new Candy(name,candyWeigth,pricePerPound,packaging);
 	}
 	private static DessertItem userPromptCookie() {

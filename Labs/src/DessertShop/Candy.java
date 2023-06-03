@@ -1,6 +1,6 @@
 package DessertShop;
 
-public class Candy extends DessertItem{
+public class Candy extends DessertItem implements SameItem<Candy>{
 	
 	private double candyWeight;
 	private double pricePerPound;
@@ -30,6 +30,13 @@ public class Candy extends DessertItem{
 	}
 	public Double calculateCost() {
 		return this.candyWeight * this.pricePerPound;
+	}
+	public Boolean isSameAs(Candy other) {
+		if(other.getName().equalsIgnoreCase(this.getName()) && other.getPricePerPound()==this.getPricePerPound() ) {
+			//System.out.println("False");
+			return true;
+		}
+		return false;
 	}
 	public String toString() {
 		String line1 = String.format("%s (%s)%n",getName(),getPackaging());
