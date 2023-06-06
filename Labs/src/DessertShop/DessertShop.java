@@ -37,8 +37,15 @@ public class DessertShop {
 		Scanner sIn = new Scanner(System.in);    
 		String choice;
 		DessertItem orderItem;
+		
+		
 
 		boolean done = false;
+		
+		while(!done) {
+			
+		
+		//Program Running
 		while (!done) {
 		    System.out.println("\n1: Candy");
 		    System.out.println("2: Cookie");            
@@ -107,6 +114,14 @@ public class DessertShop {
 		Collections.sort(orders.getOrderList());
 		System.out.println("\033[0m"+orders);
 		
+		//End Program running
+		
+		System.out.println("Hit enter to start a new order:");
+		String newOrder = sIn.nextLine();
+		if(newOrder.equals("")) {
+			done = false;
+		}
+		}
 		
 		//ArrayList<DessertItem>  orderItems = orders.getOrderList();
 		
