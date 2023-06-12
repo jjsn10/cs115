@@ -9,9 +9,20 @@ import DessertShop.Payable.PayType;
 public class DessertShop {
 	
 	public static void main(String[] args) {
+		HashMap<String,Customer> customerDB = new HashMap<String, Customer>();
 		Scanner in = new Scanner(System.in);
-		Order orders = new Order();
 		
+		
+		boolean done = false;
+		
+	while(!done) {
+		
+		Order orders = new Order();
+		/*
+		 * ArrayList<String>
+		for(String customer : customerDB.keySet()) {
+			System.out.printf("%s => %s%n",customer,customerDB.get(customer));
+		}*/
 		//Creating Instances of Candy, Cookie, IceCream, and Sunday
 				Cookie ck3 = new Cookie("Chip Macadamia",5,4.99,"Box");
 				Sundae s = new Sundae("Mint Chocolate Chip",4,0.89,"Sprinkles",0.79,"Boat");
@@ -40,19 +51,19 @@ public class DessertShop {
 		
 		
 
-		boolean done = false;
+	//	boolean done = false;
 		
-		while(!done) {
+	//while(!done) {
 			
-		
 		//Program Running
 		while (!done) {
 		    System.out.println("\n1: Candy");
 		    System.out.println("2: Cookie");            
 		    System.out.println("3: Ice Cream");
 		    System.out.println("4: Sunday");
+		    System.out.println("5: Admin Module");
 
-		    System.out.print("\nWhat would you like to add to the order? (1-4, Enter for done): ");
+		    System.out.print("\nWhat would you like to add to the order? (1-5, Enter for done): ");
 		    choice = sIn.nextLine();
 		    
 		    if (choice.equals("")) {
@@ -88,6 +99,34 @@ public class DessertShop {
 		System.out.println("\n");
 
 		/******End Copy*****/
+		done=false;
+		/*Customer cust1 = new Customer("Jared");
+		cust1.addToHistory(orders);
+		customerDB.put("Jared",cust1);*/
+		Customer cust = new Customer("");
+		//Customer cust = null;
+		String custName = "";
+		while(!done) {
+			System.out.println("Please, Add Customer Name: ");
+			custName = sIn.nextLine();
+			if(customerDB.containsKey(custName)) {
+				//cust = customerDB.get(custName);
+				customerDB.get(custName).addToHistory(orders);
+				//customerDB.put(custName,customerDB.get(custName));
+				//System.out.println("Customer Exist");
+				done = true;
+			}else {
+				//cust = new Customer(custName);
+				cust = new Customer(custName);
+				Customer.nextCustID++;
+				cust.addToHistory(orders);
+				customerDB.put(custName, cust);
+				done = true;
+			}
+			
+			
+			
+		}
 		
 		/*********Pay Method*********/
 		done=false;
@@ -108,20 +147,21 @@ public class DessertShop {
 		}
 		
 		
-		
 		/****************************/
 		
 		Collections.sort(orders.getOrderList());
-		System.out.println("\033[0m"+orders);
+		System.out.println("\033[0m \n"+orders);
 		
+		System.out.printf("%s %-15s %15s %-15s %12s %-12s %n%n","Customer Name: ",custName,"Customer ID: ",cust.getID(),"Total Orders: ",customerDB.get(custName).getOrderHistory().size());
 		//End Program running
 		
 		System.out.println("Hit enter to start a new order:");
 		String newOrder = sIn.nextLine();
-		if(newOrder.equals("")) {
-			done = false;
-		}
-		}
+			if(newOrder.equals("")) {
+				done = false;
+				
+			}
+	}
 		
 		//ArrayList<DessertItem>  orderItems = orders.getOrderList();
 		

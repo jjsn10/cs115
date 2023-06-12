@@ -6,10 +6,12 @@ import java.util.Iterator;
 //import DessertShop.Payable.PayType;
 
 public class Order implements Payable{
-	private ArrayList<DessertItem> order = new ArrayList<DessertItem>();
+	//private ArrayList<DessertItem> order = new ArrayList<DessertItem>();
+	private ArrayList<DessertItem> order;
 	private PayType payMethod;
 	
 	public Order() {
+		order = new ArrayList<DessertItem>();
 		this.payMethod = PayType.CASH;
 	}
 	public  ArrayList<DessertItem> getOrderList(){
@@ -67,14 +69,18 @@ public class Order implements Payable{
 		for(DessertItem item:this.getOrderList()) {
 			finalOutput += item;
 		}
-		finalOutput += "------------------------------------------------------------------------------------------\n";
+		finalOutput += "------------------------------------------------------------------------------------------\n\n";
 		
 		finalOutput += "Total items in the order: "+ this.itemCount()+"\n";
-		finalOutput += String.format("%-65s$%-8.2f[Tax: $%.2f]\n","Order Subtotals",this.orderCost(),this.orderTax());
-		finalOutput += String.format("%-65s$%-8.2f\n","Order Total",this.orderCost() + this.orderTax());
+		finalOutput += String.format("%-65s$%-8.2f[Tax: $%.2f]\n\n","Order Subtotals",this.orderCost(),this.orderTax());
+		finalOutput += String.format("%-65s$%-8.2f\n\n","Order Total",this.orderCost() + this.orderTax());
+		finalOutput += "-------------------------------------------------------------------------------------------\n\n";
+		
+		
+		finalOutput += "Paid for with "+ this.getPayType()+"\n\n";
+		
 		finalOutput += "-------------------------------------------------------------------------------------------\n";
 		
-		finalOutput += "Paid for with "+ this.getPayType();
 		
 		return finalOutput;
 		
