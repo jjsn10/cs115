@@ -494,13 +494,25 @@ public class DessertShop {
 		}	
 	}
 	private  static void bestCustomer() {
-		
+		ArrayList<String> customerKeys = new ArrayList<String>(customerDB.keySet());
+		Double bestCustomerTotalOrders = getTotalOrderCost(customerKeys.get(0));
+		String best = customerDB.get(customerKeys.get(0)).getName();
+		for(String key : customerKeys) {
+			if(bestCustomerTotalOrders < getTotalOrderCost(key)) {
+				//System.out.println("The Dessert Shop's most valued customer is:" + customerDB.get(key).getName());
+				best = customerDB.get(key).getName();
+			}
+			
+		}
+		System.out.println("----------------------------------------------------------------------\n");
+		System.out.println("The Dessert Shop's most valued customer is: "+ best +"\n");
+		System.out.println("----------------------------------------------------------------------\n");
 	}
 	private static Double getTotalOrderCost(String custName) {
 		double sum = 0.0;
 		ArrayList<Order> ordersUser = customerDB.get(custName).getOrderHistory();
-		for(Order order:customerDB.get(custName).getOrderHistory()){
-			sum +=0;
+		for(Order order:ordersUser){
+			sum += order.orderCost();
 		}
 		return sum;
 	}
