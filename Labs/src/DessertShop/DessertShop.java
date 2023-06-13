@@ -7,9 +7,10 @@ import java.util.*;
 import DessertShop.Payable.PayType;
 
 public class DessertShop {
+	public static HashMap<String,Customer> customerDB = new HashMap<String, Customer>();
 	
 	public static void main(String[] args) {
-		HashMap<String,Customer> customerDB = new HashMap<String, Customer>();
+		//HashMap<String,Customer> customerDB = new HashMap<String, Customer>();
 		Scanner in = new Scanner(System.in);
 		
 		
@@ -90,6 +91,9 @@ public class DessertShop {
 		                orders.add(orderItem);
 		                System.out.printf("%n%s has been added to your order.%n",orderItem.getName());
 		                break;
+		            case "5":
+		            	showAdmin();
+		            	break;
 		            default:            
 		                System.out.println("Invalid response:  Please enter a choice from the menu (1-4)");
 		                break;
@@ -104,26 +108,36 @@ public class DessertShop {
 		cust1.addToHistory(orders);
 		customerDB.put("Jared",cust1);*/
 		Customer cust = new Customer("");
+		System.out.println("Line 107: "+cust.getName());
+		System.out.println("Line 108: "+cust.getID());
 		//Customer cust = null;
 		String custName = "";
 		while(!done) {
 			System.out.println("Please, Add Customer Name: ");
 			custName = sIn.nextLine();
 			if(customerDB.containsKey(custName)) {
+				//System.out.println("113:Customer ID: "+cust.getID());
+				//System.out.println("Line 114 :"+customerDB.containsKey(custName));
+				//System.out.println("Line 115: "+custName);
+				//System.out.println("113:Customer Name: "+ customerDB);
+				//System.out.println("114:Customer ID: "+cust.getID());
 				//cust = customerDB.get(custName);
+				//Customer.nextCustID--;
 				customerDB.get(custName).addToHistory(orders);
-				//customerDB.put(custName,customerDB.get(custName));
-				//System.out.println("Customer Exist");
 				done = true;
 			}else {
+				//System.out.println("Line 124: "+ custName);
 				//cust = new Customer(custName);
-				cust = new Customer(custName);
+				cust.setName(custName);
+				//System.out.println("Line 126:Customer ID: "+cust.getID());
 				Customer.nextCustID++;
 				cust.addToHistory(orders);
 				customerDB.put(custName, cust);
+				//System.out.println("130:Customer ID: "+cust.getID());
+				//System.out.println("131:Customer Name: "+ customerDB);
 				done = true;
 			}
-			
+			System.out.println("Line 136: Hash Items: "+customerDB);
 			
 			
 		}
@@ -392,4 +406,108 @@ public class DessertShop {
 
 		
 	}
+	private static void showAdmin() {
+		System.out.println("Line 409: Show Admin ...");
+		boolean done = false;
+		String choice = "";
+		Scanner sIn = new Scanner(System.in);
+		while (!done) {
+		    System.out.println("\n1: Shop Customer List");
+		    System.out.println("2: Customer Order History");            
+		    System.out.println("3: Best Customer");
+		    System.out.println("4: Exit Admin Module");
+
+		    System.out.print("\nWhat would you like to add to the order? (1-4, Enter for done): ");
+		    choice = sIn.nextLine();
+		    
+		   
+		        switch (choice) {
+		            case "1":            
+		            	showCustomerList();
+		                //orderItem = userPromptCandy();
+		                //orders.add(orderItem);
+		                //System.out.printf("%n%s has been added to your order.%n",orderItem.getName());
+		            	//System.out.println("choice 1 pressed");
+		                break;
+		            case "2":            
+		                //orderItem = userPromptCookie();
+		                //orders.add(orderItem);
+		                //System.out.printf("%n%s has been added to your order.%n",orderItem.getName());
+		            	customerOrders();
+		            	//System.out.println("choice 2 pressed");
+		                break;
+		            case "3":            
+		                //orderItem = userPromptIceCream();
+		                //orders.add(orderItem);
+		                //System.out.printf("%n%s has been added to your order.%n",orderItem.getName());
+		            	bestCustomer();
+		            	System.out.println("choice 3 pressed");
+		                break;
+		            case "4":            
+		                //orderItem = userPromptSundae();
+		                //orders.add(orderItem);
+		                //System.out.printf("%n%s has been added to your order.%n",orderItem.getName());
+		            	System.out.println("choice 4 pressed");
+		            	done = true;
+		            	break;
+		            default:            
+		                System.out.println("Invalid response:  Please enter a choice from the menu (1-4)");
+		                break;
+		        }//end of switch (choice)
+		    }//end of if (choice.equals(""))
+		//}//end of while (!done)
+		System.out.println("\n");
+
+	}
+	private static void showCustomerList() {
+		customerDB.forEach((key,value)-> System.out.printf("%10s %s %15s %s %n","Customer Name: ",value.getName(),"Customer ID: ",value.getID()));
+	}
+	private static void customerOrders() {
+		Scanner sIn = new Scanner(System.in);
+		String custName = "";
+		boolean  done = false;
+		while(!done) {
+			System.out.println("Enter the name of the customer: ");
+			custName = sIn.nextLine();
+			if(custName.equals("")) {
+				System.out.println("Please, Enter a customer name !!");
+			}else {
+				if(customerDB.containsKey(custName)) {
+					int numOrder = 0;
+					Customer cust = customerDB.get(custName);
+					System.out.println("\n");
+					//customerDB.forEach((key,value)->System.out.printf("%10s %s %15s %s %n","Customer Name: ",value.getName(),"Customer ID: ",value.getID()));
+					System.out.printf("%10s %s %15s %s %n%n","Customer Name: ",cust.getName(),"Customer ID: ",cust.getID());
+					//System.out.println();
+					//printOrders(customerDB.get(custName).getOrderHistory());
+					for(Order order:customerDB.get(custName).getOrderHistory()) {
+						numOrder++;
+						System.out.println("----------------------------------------------------------------------------------------\n");
+						System.out.printf("%s %s %n%n","Order #:",numOrder);
+						System.out.println(order);
+					}
+					done = true;
+				}else {
+					System.out.println("Customer does not exist!!!");
+				}
+			}
+		}	
+	}
+	private  static void bestCustomer() {
+		
+	}
+	private static Double getTotalOrderCost(String custName) {
+		double sum = 0.0;
+		ArrayList<Order> ordersUser = customerDB.get(custName).getOrderHistory();
+		for(Order order:customerDB.get(custName).getOrderHistory()){
+			sum +=0;
+		}
+		return sum;
+	}
+	/*private static void printOrders(ArrayList<Order> orders) {
+		for (Order order:orders) {
+			System.out.println(order);
+		}
+		//System.out.println(orders);
+	}*/
 }
