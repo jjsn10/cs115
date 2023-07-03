@@ -8,6 +8,6 @@ public interface Biddable {
 	public abstract Double getBid(String bidder);
 	public abstract Set<String> getBidders();
 	public abstract int getBidCount();
-	public abstract void newBid(String bidder,Double bid);
+	public abstract void newBid(String bidder,double bid);
 
 }

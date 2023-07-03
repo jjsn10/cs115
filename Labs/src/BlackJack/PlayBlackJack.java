@@ -12,10 +12,10 @@ public class PlayBlackJack{
 		//CardTest.run(card);
 		
 		BJDeck deck = new BJDeck();
-		DeckTest.run(deck);
+		//DeckTest.run(deck);
 		
-		/*BJHand hand = new BJHand();
-		HandTest.run(deck, hand);*/
+		BJHand hand = new BJHand();
+		HandTest.run(deck, hand);
 	}
 
 }

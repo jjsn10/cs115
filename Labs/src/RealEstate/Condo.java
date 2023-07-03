@@ -51,4 +51,5 @@ public class Condo extends Residential{
 		return final_line;
 		//return "";
 	}
+
 }

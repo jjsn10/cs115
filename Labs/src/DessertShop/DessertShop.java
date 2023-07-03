@@ -107,9 +107,8 @@ public class DessertShop {
 		/*Customer cust1 = new Customer("Jared");
 		cust1.addToHistory(orders);
 		customerDB.put("Jared",cust1);*/
-		Customer cust = new Customer("");
-		System.out.println("Line 107: "+cust.getName());
-		System.out.println("Line 108: "+cust.getID());
+//		System.out.println("Line 107: "+cust.getName());
+//		System.out.println("Line 108: "+cust.getID());
 		//Customer cust = null;
 		String custName = "";
 		while(!done) {
@@ -126,11 +125,12 @@ public class DessertShop {
 				customerDB.get(custName).addToHistory(orders);
 				done = true;
 			}else {
+				Customer cust = new Customer("");
 				//System.out.println("Line 124: "+ custName);
 				//cust = new Customer(custName);
 				cust.setName(custName);
 				//System.out.println("Line 126:Customer ID: "+cust.getID());
-				Customer.nextCustID++;
+				//Customer.nextCustID++;
 				cust.addToHistory(orders);
 				customerDB.put(custName, cust);
 				//System.out.println("130:Customer ID: "+cust.getID());
@@ -166,7 +166,7 @@ public class DessertShop {
 		Collections.sort(orders.getOrderList());
 		System.out.println("\033[0m \n"+orders);
 		
-		System.out.printf("%s %-15s %15s %-15s %12s %-12s %n%n","Customer Name: ",custName,"Customer ID: ",cust.getID(),"Total Orders: ",customerDB.get(custName).getOrderHistory().size());
+		System.out.printf("%s %-15s %15s %-15s %12s %-12s %n%n","Customer Name: ",custName,"Customer ID: ",customerDB.get(custName).getID(),"Total Orders: ",customerDB.get(custName).getOrderHistory().size());
 		//End Program running
 		
 		System.out.println("Hit enter to start a new order:");

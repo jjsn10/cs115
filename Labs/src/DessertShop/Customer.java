@@ -11,7 +11,7 @@ public class Customer {
 	public Customer(String custName) {
 		this.custID = nextCustID;
 		this.custName = custName;
-		//nextCustID++;
+		nextCustID++;
 	}
 	public String getName() {
 		return this.custName;

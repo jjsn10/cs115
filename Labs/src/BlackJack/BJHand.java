@@ -47,10 +47,10 @@ public class BJHand implements PHand{
 	 */
 	public int getValue() {
 		// TODO Auto-generated method s
-		//int sumNum = 0;
-		//int countAce = 0;
+		int sumNum = 0;
+		int countAce = 0;
 		System.out.println("Line 50: "+getSize());
-		/*for(int i=0; i<getSize(); i++) {
+		for(int i=0; i<getSize(); i++) {
 			if(sumNum < 21) {
 				System.out.println("Line 53: " + hand.get(i).getRank() + " = " + BJCard.ACE );
 				System.out.println("Line 54: "+ (hand.get(i).getRank()== BJCard.ACE));
@@ -68,8 +68,8 @@ public class BJHand implements PHand{
 				break;
 			}
 			//System.out.println("Line 66: "+sumNum);
-		}*/
-		/*
+		}
+		
 		if(countAce > 0) {
 			for(int i=1; i<=countAce+1;i++) {
 				if(sumNum > 10 && sumNum < 21) {
@@ -78,9 +78,9 @@ public class BJHand implements PHand{
 					sumNum += sumNum + 11;
 				}
 			}
-		}*/
+		}
 		
-		//System.out.println("Line 79: "+sumNum);
+		System.out.println("Line 79: "+sumNum);
 		
 		return sumNum;
 	}
