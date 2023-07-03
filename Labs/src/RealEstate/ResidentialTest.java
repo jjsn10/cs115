@@ -8,41 +8,51 @@ class ResidentialTest {
 
 	@Test
 	void testGetBedCount() {
-		Residential r = new Residential("1949 N 900 W Provo, UT", "84604",3,2,2256.25);
-		assertEquals(3,r.getBedCount());
+		House h = new House("1949 N 900 W Provo, UT", "84604",3,2,2256.25,250);
+		assertEquals(3,h.getBedCount());
 	}
 
 	@Test
 	void testSetBedCount() {
-		Residential r = new Residential("1949 N 900 W Provo, UT", "84604",3,2,2256.25);
-		r.setBedCount(4);
-		assertEquals(4,r.getBedCount());
+		House h = new House("1949 N 900 W Provo, UT", "84604",3,2,2256.25,250);
+		h.setBedCount(4);
+		assertEquals(4,h.getBedCount());
 	}
 
 	@Test
 	void testGetBathCount() {
-		Residential r = new Residential("1949 N 900 W Provo, UT", "84604",3,2,2256.25);
-		assertEquals(3,r.getBedCount());
+		House h = new House("1949 N 900 W Provo, UT", "84604",3,2,2256.25,250);
+		assertEquals(3,h.getBedCount());
 	}
 
 	@Test
 	void testSetBathCount() {
-		Residential r = new Residential("1949 N 900 W Provo, UT", "84604",3,2,2256.25);
-		r.setBathCount(3);
-		assertEquals(3,r.getBathCount());
+		House h = new House("1949 N 900 W Provo, UT", "84604",3,2,2256.25,250);
+		h.setBathCount(3);
+		assertEquals(3,h.getBathCount());
 	}
 
 	@Test
 	void testGetSqFootage() {
-		Residential r = new Residential("1949 N 900 W Provo, UT", "84604",3,2,2256.25);
-		assertEquals(2256.25,r.getSize());
+		House h = new House("1949 N 900 W Provo, UT", "84604",3,2,2256.25,250);
+		assertEquals(2256.25,h.getSize());
 	}
 
 	@Test
 	void testSetSqFootage() {
-		Residential r = new Residential("1949 N 900 W Provo, UT", "84604",3,2,2256.50);
-		r.setSize(2256.50);
-		assertEquals(2256.50,r.getSize());
+		House h = new House("1949 N 900 W Provo, UT", "84604",3,2,2256.50,250);
+		h.setSize(2256.50);
+		assertEquals(2256.50,h.getSize());
 	}
+	/*@Test
+	void testCalculateAppraisalPrice() {
+		House h = new House("1949 N 900 W Provo, UT", "84604",3,2,2256.50,250);
+		//price = 218,880.5
+		//bedCount = 3*10,000 => 30,000
+		//bathCount = 2*12,000 => 24,000
+		//sqFootage = 2256.50
+		//yardAccres = 250*460000.00 =>115000000
+		assertEquals(218880.50+30000+24000+115000000,h.calculateAppraisalPrice());
+	}*/
 
 }

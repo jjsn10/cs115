@@ -1,8 +1,10 @@
 package RealEstate;
 
-public class Property {
+public abstract class Property {
 	private String streetAddress;
 	private String zip;
+	private double listPrice=0;
+	private double appraisalPrice=0;
 	
 	public Property() {
 		
@@ -23,5 +25,15 @@ public class Property {
 	public void setZip(String zip) {
 		this.zip = zip;
 	}
+	public Double getListPrice() {
+		return this.listPrice;
+	}
+	public void setListPrice(double listPrice) {
+		this.listPrice = listPrice;
+	}
+	protected void setAppraisalPrice(double appraisalPrice) {
+		this.appraisalPrice =appraisalPrice;
+	}
+	public abstract Double calculateAppraisalPrice();
 
 }

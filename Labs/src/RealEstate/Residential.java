@@ -1,9 +1,12 @@
 package RealEstate;
 
-public class Residential extends Property{
+import java.util.HashMap;
+
+public abstract class Residential extends Property implements Biddable{
 	private int bedCount;
 	private int bathCount;
 	private double sqFootage;
+	public HashMap<String, Double> bids = new HashMap<String,Double>();
 	
 	public Residential() {
 		
@@ -32,7 +35,9 @@ public class Residential extends Property{
 	public void setSize(double sqFootage) {
 		this.sqFootage = sqFootage;
 	}
-	
-	
+	public abstract Double calculateAppraisalPrice();
+	public void newBid(String bidder, Double bid) {
+			bids.put(bidder,bid);
+	}
 
 }
