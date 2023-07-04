@@ -101,7 +101,6 @@ public class BJCard extends PCard{
 		switch(suit) {
 			case SPADE:
 				suitSymbol = '\u2660';
-				getFontColor();
 				break;
 			case HEART:
 				suitSymbol = '\u2665';
@@ -135,9 +134,6 @@ public class BJCard extends PCard{
 	public void setHidden(Boolean hidden) {
 		this.hidden = hidden;
 	}
-	/*public Color getFontColor() {
-		return Color.RED;
-	}*/
 	public Color getFontColor() {
 		
 		if(getSuit()== HEART || getSuit()== DIAMOND) {
@@ -147,6 +143,12 @@ public class BJCard extends PCard{
 	}
 	public Color getBorderColor() {
 		return Color.blue;
+	}
+	public Color getStripeColor() {
+		return Color.blue;
+	}
+	public Color getBackColor() {
+		return Color.YELLOW;
 	}
 	
 	
