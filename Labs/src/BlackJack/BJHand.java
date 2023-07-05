@@ -7,8 +7,8 @@ import java.util.ArrayList;
 public class BJHand implements PHand{
 	
 	public ArrayList<BJCard> hand = new ArrayList<BJCard>();
-	public int sumNum = 0;
-	public int countAce = 0;
+	//public int sumNum = 0;
+	//public int countAce = 0;
 	
 	public BJHand() {
 		hand  = new ArrayList<BJCard>();
