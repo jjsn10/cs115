@@ -7,10 +7,10 @@ public abstract class Residential extends Property implements Biddable{
 	private int bedCount;
 	private int bathCount;
 	private double sqFootage;
-	public HashMap<String, Double> bids;
+	public HashMap<String, Double> bids = new HashMap<String,Double>();
 	
 	public Residential() {
-		bids = new HashMap<String,Double>();
+		
 	}
 	public Residential(String streetAddress,String zip,int bedCount, int bathCount, double sqFootage) {
 		super(streetAddress,zip);

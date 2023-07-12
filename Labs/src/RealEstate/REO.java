@@ -118,7 +118,7 @@ public class REO {
 			    	//showBids();
 			    	break;
 			    case "3":
-			    	//autoPopulateBids();
+			    	autoPopulateBids();
 			    	break;
 	            default:            
 	                System.out.println("Invalid response:  Please enter a choice from the menu (1-4)");
@@ -455,20 +455,45 @@ public class REO {
 
 		//rd.newBid(autoBidders[index], bidAmount);
 		//rd.newBid(autoBidders[index], bidAmount);
+		//int maxBid = (int) (set.getValue().calculateAppraisalPrice() * 1.1);
 		
-		for(Entry<String,Residential> set:reoListings.getListings().entrySet()) {
+		/*for(Map.Entry<String,Residential> entry:reoListings.getListings().entrySet()) {
 			//System.out.println(set.getKey());
-			/*Random r = new Random();
+			Random r = new Random();
 			int index = r.nextInt((autoBidders.length-1) +1);
-			int maxBid = (int) (set.getValue().calculateAppraisalPrice() * 1.1);
+			
+			int maxBid = (int) (entry.getValue().calculateAppraisalPrice() * 1.1);
 			System.out.println("Line 446: "+maxBid);
-			int minBid = (int) (set.getValue().calculateAppraisalPrice() * .9);
+			int minBid = (int) (entry.getValue().calculateAppraisalPrice() * .9);
 			System.out.println("Line 448: "+minBid);
-			double bidAmount = (double) Math.random() * (maxBid - minBid) + 1 + minBid;
-			//rd.newBid(autoBidders[index], bidAmount);
-			//rd.
-			newBid("2248 N orchard: ",2500000);*/
+			double bidAmount = (double) (Math.random() * (maxBid - minBid) + 1 + minBid);
+			System.out.println(bidAmount);
+			System.out.println("Line 471: "+ autoBidders[index]);
+			entry.getValue().newBid(autoBidders[index], bidAmount);
+			
+			//System.out.println(entry.getValue().getBids().size());
+		}*/
+		for(Residential res:reoListings.getResidences()) {
+			Random r = new Random();
+			int index = r.nextInt((autoBidders.length-1) +1);
+			
+			int maxBid = (int) (res.calculateAppraisalPrice() * 1.1);
+			int minBid = (int) (res.calculateAppraisalPrice() * .9);
+			
+			double bidAmount = (double) (Math.random() * (maxBid - minBid) + 1 + minBid);
+			
+			res.newBid(autoBidders[index], bidAmount);
+			System.out.println(autoBidders[index] + "-" + bidAmount);
+			//System.out.println(res.getBidCount());
 		}
+		
+		/*int counter=0;
+		for(Map.Entry<String,Double> entryBid:rd.getBids().entrySet()) {
+			System.out.println();
+		}*/
+		//
+		//System.out.println("Line 480 :"+ rd.getBidCount());
+		
 		//System.out.println("Bids added were: "+rd.getBidCount());
 	}
 
