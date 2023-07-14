@@ -116,7 +116,7 @@ public class REO {
 	                /*System.out.printf("%n%s has been added to your order.%n",orderItem.getName());*/
 	                break;
 			    case "2":
-			    	//showBids();
+			    	showBids();
 			    	break;
 			    case "3":
 			    	autoPopulateBids();
@@ -177,6 +177,54 @@ public class REO {
 			}
 			
 		}	
+	}
+	private static void showBids() {
+		String choice;
+		String bidder;
+		double bid;
+		boolean done = false;
+		HashMap<String,Residential> menuMap = new HashMap<String,Residential>();
+		Residential selectedProperty;
+		int cmd;
+		Scanner sIn = new Scanner(System.in);
+		
+		while(!done) {
+			System.out.println("\n\nCurrent Listings for REO:\n");
+			System.out.printf("%s %12s %n","No.","Property(Bids)");
+			System.out.println("-------------------------\n");
+			menuMap.clear();
+			
+			cmd=1;
+			for(Residential res:reoListings.getResidences()) {
+				menuMap.put(Integer.toString(cmd), res);
+				System.out.printf("%d:  %-28s (%d)\n",cmd, res.getStreetAddress(), res.getBidCount());
+				cmd++;
+				/*Scanner sIn = new Scanner(System.in);
+				sIn.nextLine();*/
+			}
+			System.out.printf("ENTER: Exit back to previous menu\n\n");				
+			System.out.print("For which property would you like to see the current bids?: ");	
+			choice = sIn.nextLine();
+			
+			if(choice.equals("")) {
+				done = true;
+			}else {
+				selectedProperty = menuMap.get(choice);
+				if(selectedProperty != null) {
+					System.out.println(selectedProperty+"\n");
+					System.out.println("Current bids for listing: \n");
+					System.out.println("------------------------------------\n");
+					System.out.printf("%10s %18s %n","Bidder","Bid");
+					System.out.println("------------------------------------\n");
+					for(Entry<String,Double> itemBid:selectedProperty.getBids().entrySet()) {
+						System.out.printf("%-20s $%-20s %n",itemBid.getKey(),itemBid.getValue());
+					}
+					//System.out.println("New bid for property "+selectedProperty.getStreetAddress());
+				}else {
+					System.out.println("Invalid response.  Please choose an option from the menu.\n");
+				}
+			}
+		}
 	}
 	private static void addingListMenu() {
 		boolean done = false;
@@ -464,7 +512,7 @@ public class REO {
 		for(Residential res:reoListings.getResidences()) {
 			
 			Random rb = new Random();
-			int nBids = rb.nextInt(10);
+			int nBids = rb.nextInt(10)+1;
 			
 			for(int i=0; i<nBids;i++) {
 				Random r = new Random();
