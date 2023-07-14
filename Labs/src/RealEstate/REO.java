@@ -94,6 +94,7 @@ public class REO {
 		String option ="";
 	    
 		while(!done) {
+			System.out.println("\n\n");
 			System.out.println("------------------------------------\n");
 			System.out.printf("%22s %n","Bids Menu");
 			System.out.println("------------------------------------\n");
@@ -101,7 +102,7 @@ public class REO {
 		    System.out.println("2: Show Existing Bids");  
 		    System.out.println("3: Auto Populate Bids (Dev tool)");
 		    System.out.println("ENTER: Exit back to the previous menu.");
-		    System.out.print("\nWhat would you like to do? (1–3): ");
+		    System.out.print("\nWhat would you like to do? (1–3): \n\n");
 		    option = sIn.nextLine();
 		    if (option.equals("")) {
 		        done = true;
@@ -130,22 +131,52 @@ public class REO {
 		
 	}
 	private static void addingNewBid() {
-		//System.out.println(reoListings.getStreetAddresses());
-		/*for(Entry<String, Residential> set:reoListings.getListings().entrySet()) {
-			System.out.println("Listing No: "+count+"\n");
-			System.out.println(set.getValue());
-			count++;
-		}*/
-		//int size = 1;
-		/*for(Entry<String,Residential> item:reoListings.getListings().entrySet()) {
-			//System.out.println(size +":"+ item.getValue().getStreetAddress() + "("+item.getValue().getBidCount()+")");
-			//size++;
-			item.getValue().newBid("1049 N 700", 2450000);
-		}*/
-		House h = new House();
-		System.out.println("Line 145: "+h.getBidCount());
-		h.newBid("1949 N Orchard Way", 2340000);
 		
+		String choice;
+		String bidder;
+		double bid;
+		boolean done = false;
+		HashMap<String,Residential> menuMap = new HashMap<String,Residential>();
+		Residential selectedProperty;
+		int cmd;
+		Scanner sIn = new Scanner(System.in);
+		while(!done) {
+			System.out.println("Current Listings for REO:\n");
+			System.out.printf("%s %12s %n","No.","Property(Bids)");
+			System.out.println("-------------------------\n");
+			menuMap.clear();
+			
+			cmd=1;
+			for(Residential res:reoListings.getResidences()) {
+				menuMap.put(Integer.toString(cmd), res);
+				System.out.printf("%d:  %-28s (%d)\n",cmd, res.getStreetAddress(), res.getBidCount());
+				cmd++;
+				/*Scanner sIn = new Scanner(System.in);
+				sIn.nextLine();*/
+			}
+			System.out.printf("ENTER: Exit back to previous menu\n\n");				
+			System.out.print("For which property would you like to add a bid?: ");	
+			
+			choice = sIn.nextLine();
+			
+			if(choice.equals("")) {
+				done = true;
+			}else {
+				selectedProperty = menuMap.get(choice);
+				if(selectedProperty != null) {
+					System.out.println(selectedProperty+"\n");
+					System.out.println("Please enter the name of the bidder: ");
+					bidder = sIn.nextLine();
+					System.out.println("Please enter the new bid: ");
+					bid = Double.parseDouble(sIn.nextLine());
+					selectedProperty.newBid(bidder, bid);
+					System.out.println("New bid for property "+selectedProperty.getStreetAddress());
+				}else {
+					System.out.println("Invalid response.  Please choose an option from the menu.\n");
+				}
+			}
+			
+		}	
 	}
 	private static void addingListMenu() {
 		boolean done = false;
@@ -429,62 +460,30 @@ public class REO {
 	private static void autoPopulateBids() {
 		String[] autoBidders= {"Patric Stewart","Walter Koenig","William Shatner","Leonard Nimoy","DeForect Kelley","James Doohan","George Takei","Majel Barrett","Nichelle Nichol","Jonathan Frank"
                 ,"Marina Sirtis","Brent Spiner","Gates McFadden","Michael Dorn","LeVar Burton","Wil Wheaton","Colm Meaney","Michelle Forbes"};
-		//Create an object of type Random,  r
-
-		//Random r = new Random();
-
-		 
-
-		//Randomly select a number between 0 and the length of the autoBidders list - 1. This will be your random index into the array.
-
-		//int index = r.nextInt((autoBidders.length-1) +1);
-
-		 
-
-		//Create a random bid amount between -10% and +10% of the Appraisal Price
-
-		//int maxBid = (int) (rd.calculateAppraisalPrice() * 1.1);
-
-		//int minBid = (int) (rd.calculateAppraisalPrice() * .9);
-
-		//double bidAmount = (double) Math.random() * (maxBid - minBid) + 1 + minBid;
-
-		 
-
-		//Use the random index number to select a random bidder and use the randomly generated bid amount to create a new bid.
-
-		//rd.newBid(autoBidders[index], bidAmount);
-		//rd.newBid(autoBidders[index], bidAmount);
-		//int maxBid = (int) (set.getValue().calculateAppraisalPrice() * 1.1);
 		
-		/*for(Map.Entry<String,Residential> entry:reoListings.getListings().entrySet()) {
-			//System.out.println(set.getKey());
-			Random r = new Random();
-			int index = r.nextInt((autoBidders.length-1) +1);
-			
-			int maxBid = (int) (entry.getValue().calculateAppraisalPrice() * 1.1);
-			System.out.println("Line 446: "+maxBid);
-			int minBid = (int) (entry.getValue().calculateAppraisalPrice() * .9);
-			System.out.println("Line 448: "+minBid);
-			double bidAmount = (double) (Math.random() * (maxBid - minBid) + 1 + minBid);
-			System.out.println(bidAmount);
-			System.out.println("Line 471: "+ autoBidders[index]);
-			entry.getValue().newBid(autoBidders[index], bidAmount);
-			
-			//System.out.println(entry.getValue().getBids().size());
-		}*/
 		for(Residential res:reoListings.getResidences()) {
-			Random r = new Random();
-			int index = r.nextInt((autoBidders.length-1) +1);
 			
-			int maxBid = (int) (res.calculateAppraisalPrice() * 1.1);
-			int minBid = (int) (res.calculateAppraisalPrice() * .9);
+			Random rb = new Random();
+			int nBids = rb.nextInt(10);
 			
-			double bidAmount = (double) (Math.random() * (maxBid - minBid) + 1 + minBid);
+			for(int i=0; i<nBids;i++) {
+				Random r = new Random();
+				int index = r.nextInt((autoBidders.length-1) +1);
+				
+				int maxBid = (int) (res.calculateAppraisalPrice() * 1.1);
+				int minBid = (int) (res.calculateAppraisalPrice() * .9);
+				
+				double bidAmount = (double) (Math.random() * (maxBid - minBid) + 1 + minBid);
+				res.newBid(autoBidders[index], bidAmount);
+			}
+			System.out.println(res.getBidCount() + " new bids have been added to listing "+ res.getStreetAddress());
 			
-			res.newBid(autoBidders[index], bidAmount);
-			System.out.println(autoBidders[index] + "-" + bidAmount);
-			//System.out.println(res.getBidCount());
+			
+			/*System.out.println(res.getStreetAddress() + "   "  + autoBidders[index] + "   -    " + bidAmount);*/
+			/*System.out.println(res.getBidCount());*/
+			/*Scanner in = new Scanner(System.in);
+			in.nextLine();*/
+			//
 		}
 		
 		/*int counter=0;
