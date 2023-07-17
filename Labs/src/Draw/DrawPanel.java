@@ -87,14 +87,26 @@ public class DrawPanel extends JPanel {
 		g2.fillOval((-600), 350, this.getWidth() + 1200, 700);
 		
 		//DrawTree Trees
-		Tree t1 = new Tree(g2, 50, 400, 1, 3, BROWN , DARK_GREEN);
+		Tree t1 = new Tree(g2, 50, 400, 2, 3, BROWN , DARK_GREEN);
 		t1.draw();
 		
-		Tree t2 = new Tree(g2, 200, 375, 1, 5, BROWN , GRAY);
+		Tree t2 = new Tree(g2, 200, 375, 2, 5, BROWN , GRAY);
 		t2.draw();
 		
-		Tree t3 = new Tree(g2, 300, 450, 1, 4, BROWN , FOREST_GREEN);
+		Tree t3 = new Tree(g2, 300, 450, 3, 4, BROWN , FOREST_GREEN);
 		t3.draw();
+		
+		Tree t4 = new Tree(g2,800,670, 3, 4, BROWN,FOREST_GREEN);
+		t4.draw();
+		
+		Tree t5 = new Tree(g2,870,650, 3, 5, BROWN,GREEN);
+		t5.draw();
+		
+		Tree t6 = new Tree(g2,950,670, 3, 3, BROWN,GRAY);
+		t6.draw();
+		
+		Tree t7 = new Tree(g2,1030,650, 3, 5, BROWN,INDIAN_RED);
+		t7.draw();
 		
 		
 		//Populate the scene with your own trees here!

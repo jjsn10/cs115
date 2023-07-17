@@ -70,7 +70,7 @@ public class Tree extends LandscapeObject{
 	public void draw() {
 		applyScale();
 		drawTrunk();
-		//drawBranches();
+		drawBranches();
 	}//end of method draw()
 	
 	/**
@@ -109,8 +109,20 @@ public class Tree extends LandscapeObject{
 	private void drawBranches() {
 		//int[] xPoints2 = {1000, 1100, 1200}; 
 		//int[] yPoints2 = {50, 250, 50};
-		int[] xPoints2 = {1000, 1100, 1200}; 
-		int[] yPoints2 = {currentX, 250, 50};
-		Polygon triangle2 = new Polygon(xPoints2,yPoints2,3);
+		//int[] xPoints2 = {((getStartX())+trunkWidth/2)-trunkWidth,(getStartX()+trunkWidth/2),(getStartX()+trunkWidth/2)+trunkWidth}; 
+		//int[] yPoints2 = {getStartY(),getStartY()-trunkHeight,getStartY()};
+		//Polygon triangle2 = new Polygon(xPoints2,yPoints2,3);
+		//g2.setColor(Color.decode(branchColor));
+		//g2.fillPolygon(triangle2);
+		int yUp=0;
+		
+		for(int i=0;i<levels;i++){
+			int[] xPoints2 = {((getStartX())+trunkWidth/2)-trunkWidth,(getStartX()+trunkWidth/2),(getStartX()+trunkWidth/2)+trunkWidth}; 
+			int[] yPoints2 = {getStartY()-yUp,(getStartY()-trunkHeight)-yUp,getStartY()-yUp};
+			Polygon triangle2 = new Polygon(xPoints2,yPoints2,3);
+			g2.setColor(Color.decode(branchColor));
+			g2.fillPolygon(triangle2);
+			yUp += trunkHeight/2;
+		}
 	}//end of method drawBranches()
 }//end of class Tree
