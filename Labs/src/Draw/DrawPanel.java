@@ -54,6 +54,10 @@ public class DrawPanel extends JPanel {
 	private final String PERU = "CD853F";
 	private final String WHITE_SMOKE = "F5F5F5";
 	private final String BURLYWOOD = "DEB887";
+	
+	//Sun Colors
+	private final String YELLOW = "FFFF00";
+	private final String ORANGE_SUN = "FFBF00";
 
 
 	
@@ -96,16 +100,17 @@ public class DrawPanel extends JPanel {
 		Tree t3 = new Tree(g2, 300, 450, 3, 4, BROWN , FOREST_GREEN);
 		t3.draw();
 		
-		Tree t4 = new Tree(g2,800+200,670, 3, 4, BROWN,FOREST_GREEN);
+		Tree t4 = new Tree(g2,800+300,670, 6, 4, BROWN,FOREST_GREEN);
 		t4.draw();
 		
-		Tree t5 = new Tree(g2,870+200,650, 3, 5, BROWN,GREEN);
+		Tree t5 = new Tree(g2,870+400,650, 6, 5, BROWN,GREEN);
 		t5.draw();
 		
-		Tree t6 = new Tree(g2,950+200,670, 3, 3, BROWN,GRAY);
+		Tree t6 = new Tree(g2,950+500,670, 6, 3, BROWN,GRAY);
 		t6.draw();
 		
-		Tree t7 = new Tree(g2,1030+200,650, 3, 5, BROWN,INDIAN_RED);
+		//Tree t7 = new Tree(g2,1030+300,650, 6, 5, BROWN,INDIAN_RED);
+		Tree t7 = new Tree(g2,900,650, 6, 5, BROWN,INDIAN_RED);
 		t7.draw();
 		
 		
@@ -126,6 +131,9 @@ public class DrawPanel extends JPanel {
 		House h = new House(g2,500,500,2,PERU,GRAY,BROWN,BROWN,WHITE);
 		h.draw();
 		
+		//Creating Sun from Class Sun
+		Sun s = new Sun(g2,1200,100,5,YELLOW);
+		s.draw();
 		
 	}//end of method paintComponent(Graphics)
 
