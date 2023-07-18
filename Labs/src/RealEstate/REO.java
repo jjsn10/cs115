@@ -167,10 +167,18 @@ public class REO {
 					System.out.println(selectedProperty+"\n");
 					System.out.println("Please enter the name of the bidder: ");
 					bidder = sIn.nextLine();
-					System.out.println("Please enter the new bid: ");
-					bid = Double.parseDouble(sIn.nextLine());
-					selectedProperty.newBid(bidder, bid);
-					System.out.println("New bid for property "+selectedProperty.getStreetAddress());
+					try {
+						System.out.println("Please enter the new bid: ");
+						bid = Double.parseDouble(sIn.nextLine());
+						selectedProperty.newBid(bidder, bid);
+						System.out.println("New bid for property "+selectedProperty.getStreetAddress());
+					} catch (Exception e) {
+						System.out.println("Please, Enter a double number!!");
+					}
+					//System.out.println("Please enter the new bid: ");
+					//bid = Double.parseDouble(sIn.nextLine());
+					
+					
 				}else {
 					System.out.println("Invalid response.  Please choose an option from the menu.\n");
 				}
@@ -217,7 +225,7 @@ public class REO {
 					System.out.printf("%10s %18s %n","Bidder","Bid");
 					System.out.println("------------------------------------\n");
 					for(Entry<String,Double> itemBid:selectedProperty.getBids().entrySet()) {
-						System.out.printf("%-20s $%-20s %n",itemBid.getKey(),itemBid.getValue());
+						System.out.printf("%-20s $ %-20.2f %n",itemBid.getKey(),itemBid.getValue());
 					}
 					//System.out.println("New bid for property "+selectedProperty.getStreetAddress());
 				}else {

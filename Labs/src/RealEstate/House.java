@@ -43,8 +43,8 @@ public class House extends Residential{
 		String line2 = String.format("%-10s%-25s%45s%15s %n",line1_1,line2_1,line2_3,line2_4);*/
 		
 		String final_line_up = String.format("%s","-------------------------------------------------------------------\n");
-		String line5 = String.format("%s %s %n","Appraisal Price: $",calculateAppraisalPrice());
-		String line6 = String.format("%s %s %n","List Price: $",getListPrice());
+		String line5 = String.format("%s %.2f %n","Appraisal Price: $",calculateAppraisalPrice());
+		String line6 = String.format("%s %.2f %n","List Price: $",getListPrice());
 		String final_line_down = String.format("%s","-------------------------------------------------------------------\n");
 		String final_line = String.format("%s%s%s %15s %15s %15s %15s%s %15s %15s%s %n%n", line_up, line1_1, line_down,line1,line2,line3,line4,final_line_up,line5,line6,final_line_down);
 		return final_line;
