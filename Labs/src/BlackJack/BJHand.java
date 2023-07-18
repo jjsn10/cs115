@@ -51,7 +51,7 @@ public class BJHand implements PHand{
 		int sumNum =0;
 		Scanner iSN = new Scanner(System.in);
 			for(int i=0; i<getSize(); i++) {
-				System.out.println("Line 54: "+sumNum);
+				//System.out.println("Line 54: "+sumNum);
 				if(hand.get(i).getRank() > BJCard.TEN && hand.get(i).getRank() <= BJCard.KING) {
 					sumNum += 10;
 					/*System.out.println("Line 57:" +hand.get(i).getRank());

@@ -96,20 +96,35 @@ public class DrawPanel extends JPanel {
 		Tree t3 = new Tree(g2, 300, 450, 3, 4, BROWN , FOREST_GREEN);
 		t3.draw();
 		
-		Tree t4 = new Tree(g2,800,670, 3, 4, BROWN,FOREST_GREEN);
+		Tree t4 = new Tree(g2,800+200,670, 3, 4, BROWN,FOREST_GREEN);
 		t4.draw();
 		
-		Tree t5 = new Tree(g2,870,650, 3, 5, BROWN,GREEN);
+		Tree t5 = new Tree(g2,870+200,650, 3, 5, BROWN,GREEN);
 		t5.draw();
 		
-		Tree t6 = new Tree(g2,950,670, 3, 3, BROWN,GRAY);
+		Tree t6 = new Tree(g2,950+200,670, 3, 3, BROWN,GRAY);
 		t6.draw();
 		
-		Tree t7 = new Tree(g2,1030,650, 3, 5, BROWN,INDIAN_RED);
+		Tree t7 = new Tree(g2,1030+200,650, 3, 5, BROWN,INDIAN_RED);
 		t7.draw();
 		
 		
-		//Populate the scene with your own trees here!
+		//Creating Clouds from Class Cloud
+		Cloud c1 = new Cloud(g2,50,100,1,WHITE_SMOKE);
+		c1.draw();
+		
+		Cloud c2 = new Cloud(g2,150,150,3,WHITE_SMOKE);
+		c2.draw();
+		
+		Cloud c3 = new Cloud(g2,350,100,2,WHITE_SMOKE);
+		c3.draw();
+		
+		Fence f1 = new Fence(g2,50,600,1,12,BROWN,BROWN);
+		f1.draw();
+		
+		//Creating Houses from Class House
+		House h = new House(g2,500,500,2,PERU,GRAY,BROWN,BROWN,WHITE);
+		h.draw();
 		
 		
 	}//end of method paintComponent(Graphics)
